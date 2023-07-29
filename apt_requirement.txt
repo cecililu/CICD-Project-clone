@@ -1,7 +1,7 @@
 curl
 libpangocairo-1.0-0
 libpq-dev
-python
+python3
 libproj-dev
 libc-dev
 binutils
