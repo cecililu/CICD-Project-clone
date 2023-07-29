@@ -1,5 +1,5 @@
 pipeline {
-    agent cecil-ag
+    agent cecil
          stages {
            
               
