@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent cecil
          stages {
            
               
@@ -14,7 +14,8 @@ pipeline {
                              sh 'sudo docker build -t docker-cicd:v1 .'
 
                         }
-                    }
+
+                  
                 }
             
          }
