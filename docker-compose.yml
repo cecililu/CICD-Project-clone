@@ -1,0 +1,60 @@
+version: "3"
+services:
+  cycle-web:
+    env_file: .env   # Change env_sample.txt to env.txt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - cycle-db  
+
+  cycle-db:
+    image: mdillon/postgis:11-alpine
+    restart: always
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+    ports:
+      - 5432:5432
+redis:
+    image: redis:alpine
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - ../redis_data:/var/lib/redis 
+worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    # command : “celery -A project worker -f /logs/worker.log -l DEBUG”
+    entrypoint : “celery -A project worker -l DEBUG -Q default --pool=solo”
+    depends_on:
+      - cycle-web
+      # - db
+    volumes:
+      - .:/code
+      - ./logs/:/logs/
+    env_file:
+      - .env 
+beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    entrypoint : “celery -A project beat --loglevel=debug”
+    depends_on:
+      - cycle-web
+      # - db
+      - worker
+    volumes:
+      - .:/code
+      - ./logs/:/logs/
+    env_file:
+      - .env
+
