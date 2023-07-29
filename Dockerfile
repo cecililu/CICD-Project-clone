@@ -3,7 +3,7 @@
  RUN mkdir /code
  WORKDIR /code
 
- COPY apt_requirements.txt /code/
+ COPY apt_requirement.txt /code/
  RUN apt-get -y update
  RUN cat apt_requirement.txt | xargs apt -y --no-install-recommends install \
 	&& rm -rf /var/lib/apt/lists/* \
