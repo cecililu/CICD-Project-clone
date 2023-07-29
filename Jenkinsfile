@@ -14,7 +14,7 @@ pipeline {
                              sh 'sudo docker build -t docker-cicd:v1 .'
 
                         }
-
+                    }
                   
                 }
             
