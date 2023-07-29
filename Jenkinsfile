@@ -8,10 +8,10 @@ pipeline {
                          sh 'echo  $USER'
                          sh 'echo  $USER'
                          sh 'pwd'
-                         sh 'docker ps'
+                         sh 'sudo docker ps'
                          
                         script{
-                             sh 'docker build -t docker-cicd:v1 .'
+                             sh 'sudo docker build -t docker-cicd:v1 .'
 
                         }
                     }
