@@ -18,7 +18,8 @@ ENV C_INCLUDE_PATH=/usr/include/gdal
 COPY requirement.txt /code/
 
 #required for gdal installation
+RUN pip install --no-cache-dir setuptools==57.5.0
 RUN pip install --no-cache-dir -r requirement.txt
 RUN rm /code/requirement.txt /code/apt_requirement.txt
 
-ENTRYPOINT /code/docker-entrypoint.sh
+ENTRYPOINT /code/entrypoint.sh
