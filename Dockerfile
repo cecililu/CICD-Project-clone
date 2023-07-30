@@ -14,12 +14,13 @@ RUN cat apt_requirement.txt | xargs apt -y --no-install-recommends install \
 
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
-
 COPY requirement.txt /code/
-COPY entrypoint.sh /code/
+
 #required for gdal installation
 RUN pip install --no-cache-dir setuptools==57.5.0
 RUN pip install --no-cache-dir -r requirement.txt
 RUN rm /code/requirement.txt /code/apt_requirement.txt
+
+COPY . /code/
 
 ENTRYPOINT /code/entrypoint.sh
