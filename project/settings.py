@@ -103,18 +103,26 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.environ.get(
+#             "SQL_ENGINE", "django.contrib.gis.db.backends.postgis"
+#         ),
+#         "NAME": os.environ.get("POSTGRES_DB", "postgres"),
+#         "USER": os.environ.get("POSTGRES_USER", "postgres"),
+#         "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
+#         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
+#         "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get(
-            "SQL_ENGINE", "django.contrib.gis.db.backends.postgis"
-        ),
-        "NAME": os.environ.get("POSTGRES_DB", "postgres"),
-        "USER": os.environ.get("POSTGRES_USER", "postgres"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
-        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
-        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
