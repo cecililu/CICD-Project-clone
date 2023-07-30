@@ -15,6 +15,7 @@
 
 
  COPY requirement.txt /code/
+ RUN pip install --upgrade pip
  RUN pip install -r requirement.txt
  
  ENTRYPOINT /code/docker-entrypoint.sh
