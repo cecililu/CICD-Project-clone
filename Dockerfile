@@ -23,4 +23,4 @@ RUN rm /code/requirement.txt /code/apt_requirement.txt
 
 COPY . /code/
 
-ENTRYPOINT /code/entrypoint.sh
+ENTRYPOINT bash /code/entrypoint.sh
