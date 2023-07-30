@@ -9,13 +9,9 @@
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt autoremove \
 	&& apt autoclean
-
- ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
- ENV C_INCLUDE_PATH=/usr/include/gdal
-
+ # ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ # ENV C_INCLUDE_PATH=/usr/include/gdal
 
  COPY requirement.txt /code/
- RUN pip install --upgrade pip
  RUN pip install -r requirement.txt
- 
  ENTRYPOINT /code/docker-entrypoint.sh
