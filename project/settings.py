@@ -192,7 +192,7 @@ if USE_S3:
     else:
         STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
         STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    DEFAULT_FILE_STORAGE = "project.storage_backends.S3PublicMediaStorage"
+    DEFAULT_FILE_= "project.storage_backends.S3PublicMediaStorage"
     PRIVATE_FILE_STORAGE = "project.storage_backends.S3PrivateMediaStorage"
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
     MEDIA_ROOT = os.path.join(BASE_DIR, "privateuploads")
