@@ -1,0 +1,5 @@
+
+POSTGRES_DB=cecil_db
+POSTGRES_PASSWORD=postgres
+PGADMIN_DEFAULT_EMAIL=cecilghimire@gmail.com
+PGADMIN_DEFAULT_PASSWORD=root
