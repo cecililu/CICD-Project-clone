@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("build docker image") {
             agent {
-                label cecil
+                label "cecil"
             }
             steps {
                 sh 'echo  $USER'
