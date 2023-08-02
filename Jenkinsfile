@@ -29,7 +29,7 @@ pipeline {
         }
          stage('Run ansible playook to deploy container in servers') {
             agent {
-                label 'default' // Specific agent for the 'Build' stage
+                label any // Specific agent for the 'Build' stage
             }
             steps {
                  dir('/home/vagrant/ansible/ansible_docker_') {
