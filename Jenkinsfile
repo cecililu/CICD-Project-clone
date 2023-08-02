@@ -29,13 +29,13 @@ pipeline {
         }
          stage('Run ansible playook to deploy container in servers') {
             agent {
-                label any // Specific agent for the 'Build' stage
+                label "default" // Specific agent for the 'Build' stage
             }
             steps {
-                 dir('/home/vagrant/ansible/ansible_docker_') {
+                    sh 'cd /home/vagrant/ansible/ansible_docker_'
                     // Run the Ansible playbook using the ansible-playbook command
                     sh 'ansible-playbook run_myrole_playbook.yaml'
-                 }
+                 
             }
         }
     }
