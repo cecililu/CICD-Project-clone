@@ -2,6 +2,9 @@ pipeline {
     agent any
     stages {
         stage("build docker image") {
+            agent {
+                label cecil
+            }
             steps {
                 sh 'echo  $USER'
                 sh 'echo  $USER'
@@ -24,6 +27,17 @@ pipeline {
                      
                     }
                 }
+            }
+        }
+         stage('Run ansible playook to deploy container in servers') {
+            agent {
+                label 'default' // Specific agent for the 'Build' stage
+            }
+            steps {
+                 dir('/home/vagrant/ansible/ansible_docker_') {
+                    // Run the Ansible playbook using the ansible-playbook command
+                    sh 'ansible-playbook run_myrole_playbook.yaml'
+                
             }
         }
     }
