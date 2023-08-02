@@ -33,7 +33,7 @@ pipeline {
             }
             steps {
                     sh 'cd /home/vagrant/ansible/ansible_docker_'
-                    sh "ls/home/vagrant/ansible/ansible_docker_ "
+                    sh "ls /home/vagrant/ansible/ansible_docker_ "
                     sh 'pwd'
                     sh "ls"
                     sh "whoami"
