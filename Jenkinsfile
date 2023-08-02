@@ -39,6 +39,7 @@ pipeline {
                     sh "whoami"
                     // Run the Ansible playbook using the ansible-playbook command
                     dir( "/home/vagrant/ansible/ansible_docker_"){
+                        sh "ls"
                     sh "pwd"
                     sh 'ansible-playbook run_myrole_playbook.yaml'
                     }    
