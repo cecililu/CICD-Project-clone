@@ -33,6 +33,8 @@ pipeline {
             }
             steps {
                     sh 'cd /home/vagrant/ansible/ansible_docker_'
+                    sh 'pwd'
+                    sh "ls"
                     // Run the Ansible playbook using the ansible-playbook command
                     sh 'ansible-playbook run_myrole_playbook.yaml'
                  
