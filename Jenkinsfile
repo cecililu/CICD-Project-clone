@@ -2,9 +2,7 @@ pipeline {
     agent any
     stages {
         stage("build docker image") {
-            agent {
-                label any
-            }
+         
             steps {
                 sh 'echo  $USER'
                 sh 'echo  $USER'
