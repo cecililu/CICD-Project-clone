@@ -31,7 +31,7 @@ pipeline {
         }
          stage('Run ansible playook to deploy container in servers') {
             agent {
-                label "default" // Specific agent for the 'Build' stage
+                label "agent-node" // Specific agent for the 'Build' stage
             }
             steps {
                     sh 'cd /home/vagrant/ansible/ansible_docker_'
@@ -44,7 +44,7 @@ pipeline {
                         sh "ls"
                     sh "pwd"
                     sh "sudo su"    
-                    sh 'ansible-playbook run_myrole_playboom.yaml'
+                    sh 'ansible-playbook run_role.yaml'
                     }    
             }
         }
