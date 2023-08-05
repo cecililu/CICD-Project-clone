@@ -1,19 +1,15 @@
-FROM naxa/python:3.9-slim
+FROM python:3.9-slim
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /code
-RUN mkdir -p /sock
-RUN mkdir -p /logs
+
 WORKDIR /code
 
 COPY apt_requirement.txt /code/
 RUN apt-get -y update
-RUN cat apt_requirement.txt | xargs apt -y --no-install-recommends install \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& apt autoremove \
-	&& apt autoclean
+RUN cat apt_requirement.txt | xargs apt -y --no-install-recommends install 
+	
 
-ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
-ENV C_INCLUDE_PATH=/usr/include/gdal
+
 COPY requirement.txt /code/
 
 #required for gdal installation
