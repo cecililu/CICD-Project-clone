@@ -45,11 +45,16 @@ pipeline {
                     sh "pwd"
                     sh "sudo su"    
                     sh 'ansible-playbook run_role.yaml'
-                    emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-
-Check console output at $BUILD_URL to view the results.''', compressLog: true, subject: 'JENKINS NOTIFICATION', to: 'cecilghimire@gmail.com'
+                  
                     }    
             }
+        }
+    }
+     post {
+        always {
+            emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+            Check console output at $BUILD_URL to view the results.''', compressLog: true, subject: 'JENKINS NOTIFICATION', to: 'cecilghimire@gmail.com'
         }
     }
 }
