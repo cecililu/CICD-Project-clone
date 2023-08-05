@@ -11,6 +11,5 @@ cmake
 gcc
 nano
 git
-gdal-bin
 libgdal-dev
 g++
