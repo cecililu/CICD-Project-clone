@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /code
-
+RUN mkdir -p /logs
 WORKDIR /code
 
 COPY apt_requirement.txt /code/
